@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 2,
+    "owner": null,
+    "usable": false
+  },
+  {
+    "id": 3,
+    "owner": 1,
+    "usable": true
+  },
+  {
+    "id": 4,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 5,
+    "owner": 2,
+    "usable": true
+  },
+  {
+    "id": 6,
+    "owner": null,
+    "usable": false
+  },
+  {
+    "id": 7,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 8,
+    "owner": 3,
+    "usable": true
+  },
+  {
+    "id": 9,
+    "owner": 4,
+    "usable": false
+  },
+  {
+    "id": 10,
+    "owner": 5,
+    "usable": true
+  },
+  {
+    "id": 11,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 12,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 13,
+    "owner": null,
+    "usable": false
+  },
+  {
+    "id": 14,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 15,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 16,
+    "owner": 9,
+    "usable": true
+  },
+  {
+    "id": 17,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 18,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 19,
+    "owner": 12,
+    "usable": true
+  },
+  {
+    "id": 20,
+    "owner": null,
+    "usable": false
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "allocations": [
+      {
+        "user_id": 1,
+        "sensor_id": 3,
+        "sensor_is_user_property": true
+      },
+      {
+        "user_id": 2,
+        "sensor_id": 5,
+        "sensor_is_user_property": true
+      },
+      {
+        "user_id": 7,
+        "sensor_id": 1,
+        "sensor_is_user_property": false
+      },
+      {
+        "user_id": 10,
+        "sensor_id": 4,
+        "sensor_is_user_property": false
+      },
+      {
+        "user_id": 13,
+        "sensor_id": 7,
+        "sensor_is_user_property": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "allocations": [
+      {
+        "user_id": 2,
+        "sensor_id": 5,
+        "sensor_is_user_property": true
+      },
+      {
+        "user_id": 6,
+        "sensor_id": 1,
+        "sensor_is_user_property": false
+      },
+      {
+        "user_id": 9,
+        "sensor_id": 4,
+        "sensor_is_user_property": true
+      },
+      {
+        "user_id": 11,
+        "sensor_id": 4,
+        "sensor_is_user_property": false
+      },
+      {
+        "user_id": 14,
+        "sensor_id": 7,
+        "sensor_is_user_property": false
+      }
+    ]
+  }
+]
