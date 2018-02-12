@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 3,
+    "owner": 1,
+    "usable": true
+  },
+  {
+    "id": 4,
+    "owner": null,
+    "usable": true
+  },
+  {
+    "id": 5,
+    "owner": 2,
+    "usable": true
+  },
+  {
+    "id": 7,
+    "owner": null,
+    "usable": true
+  }
+]

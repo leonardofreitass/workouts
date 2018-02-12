@@ -6,7 +6,7 @@ const match = (participants, [...sensors]) =>
       const sensor = _.find({ owner: participant.id }, sensors)
                   || _.find({ owner: null }, sensors);
 
-      _.remove({ id: sensor.id }, sensors);
+      sensors = _.remove({ id: sensor.id }, sensors);
 
       return {
         user_id: participant.id,
