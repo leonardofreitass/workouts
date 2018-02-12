@@ -1,22 +1,20 @@
 const _ = require('lodash/fp');
 
-const match = (participants, [...sensors]) => 
-  _.map(
-    (participant) => {
-      const sensor = _.find({ owner: participant }, sensors)
+const match = (participants, [...sensors]) =>
+  _.map((participant) => {
+    const sensor = _.find({ owner: participant }, sensors)
                   || _.find({ owner: null }, sensors);
 
-      if (sensor) {
-        sensors = _.remove({ id: sensor.id }, sensors);
-      }
-
-      return {
-        user_id: participant,
-        sensor_id: sensor ? sensor.id : null,
-        sensor_is_user_property: sensor ? sensor.owner === participant : false,
-      }
+    if (sensor) {
+      sensors = _.remove({ id: sensor.id }, sensors);
     }
-  )(participants);
+
+    return {
+      user_id: participant,
+      sensor_id: sensor ? sensor.id : null,
+      sensor_is_user_property: sensor ? sensor.owner === participant : false,
+    };
+  })(participants);
 
 const missingAllocations = allocations =>
   _.pipe(

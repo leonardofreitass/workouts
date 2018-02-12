@@ -15,5 +15,5 @@ const onError = _.curry((res, error) => {
 });
 
 module.exports = {
-  onError
+  onError,
 };

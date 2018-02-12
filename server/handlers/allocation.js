@@ -4,26 +4,25 @@ const ErrorHandler = require('../lib/error');
 const AllocationLib = require('../lib/allocation');
 
 module.exports = ({ models, io }) => {
-
   // Models
   const Sensor = models.sensor;
   const Workout = models.workout;
 
   // API Handlers
   const createAllocations = (req, res) => {
-    const { workout_id, participants } = req.body;
-    
+    const { workout_id: workoutId, participants } = req.body;
+
     return Sensor.findSensorForParticipants(participants)
       .then((sensors) => {
         const allocations = AllocationLib.match(participants, sensors);
-        const participants_without_allocation = AllocationLib.missingAllocations(allocations);
+        const missingAllocation = AllocationLib.missingAllocations(allocations);
 
-        const payload = { 
+        const payload = {
           allocations,
-          participants_without_allocation,
+          participants_without_allocation: missingAllocation,
         };
 
-        io.emit('new allocations', { workout_id, ...payload });
+        io.emit('new allocations', { workout_id: workoutId, ...payload });
 
         return Workout.createAllocations(allocations)
           .then(() => res.send(payload));
@@ -32,16 +31,16 @@ module.exports = ({ models, io }) => {
   };
 
   const getWorkoutAllocations = (req, res) => {
-    const { workout_id } = req.params;
+    const { workout_id: workoutId } = req.params;
 
-    return Workout.getAllocations(Number(workout_id))
-      .then((workout) => res.send(workout))
+    return Workout.getAllocations(Number(workoutId))
+      .then(workout => res.send(workout))
       .catch(ErrorHandler.onError(res));
   };
 
   // Socket Handlers
-  const onFailure = _.curry((socket, { user_id }) => {
-    Sensor.findAvailable()
+  const onFailure = _.curry((socket, { user_id: userId }) => {
+    Sensor.findAvailable(userId)
       .then((sensor) => {
         socket.emit('new sensor', { sensor });
       });
@@ -52,4 +51,4 @@ module.exports = ({ models, io }) => {
     getWorkoutAllocations,
     onFailure,
   };
-}
+};

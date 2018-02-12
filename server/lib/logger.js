@@ -7,21 +7,21 @@ const logger = new Winston.Logger({
       handleExceptions: true,
       json: true,
       maxFiles: 5,
-      colorize: false
+      colorize: false,
     }),
     new Winston.transports.Console({
       handleExceptions: true,
       json: false,
-      colorize: true
-    })
+      colorize: true,
+    }),
   ],
-  exitOnError: false
+  exitOnError: false,
 });
 
 logger.stream = {
   write: (message) => {
     logger.log('info', message);
-  }
+  },
 };
 
 module.exports = logger;

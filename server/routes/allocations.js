@@ -12,4 +12,4 @@ module.exports = ({ validators, handlers }) => {
     .get(AllocationHandler.getWorkoutAllocations);
 
   return router;
-}
+};

@@ -8,7 +8,6 @@ const ExpressConfig = require('./config/express');
 const Logger = require('./lib/logger');
 
 module.exports = class Server {
-
   static bootstrap() {
     return new Server();
   }
@@ -43,9 +42,8 @@ module.exports = class Server {
     });
   }
 
-  start(){
+  start() {
     return this.server.listen(this.config.port, () => {
-
       Logger.info(`Workouts server running at: localhost:${this.config.port}`);
     });
   }
