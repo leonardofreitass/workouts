@@ -4,6 +4,7 @@
   "description": "Workout API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "NODE_ENV=test mocha ./test/specs/*"
   },
   "repository": {
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/leonardofreitass/workouts/issues"
   },
-  "homepage": "https://github.com/leonardofreitass/workouts#readme"
+  "homepage": "https://github.com/leonardofreitass/workouts#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "helmet": "^3.11.0",
+    "morgan": "^1.9.0",
+    "winston": "^2.4.0"
+  }
 }
