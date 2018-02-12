@@ -21,6 +21,7 @@ module.exports = class Server {
     this.io = new SocketIO(this.server);
 
     Consign({ cwd: 'server', verbose: false })
+      .then('validators')
       .include('models')
       .then('handlers')
       .then('routes')
@@ -37,7 +38,7 @@ module.exports = class Server {
   sockets() {
     this.io.on('connection', (socket) => {
       Logger.info('User connected');
-      
+
       socket.on('sensor failure', this.handlers.allocation.onFailure(socket));
     });
   }

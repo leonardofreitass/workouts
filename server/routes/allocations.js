@@ -1,11 +1,12 @@
-const express = require('express');
+const Express = require('express');
+const ValidationMiddleware = require('../middleware/validation');
 
-module.exports = ({ handlers }) => {
+module.exports = ({ validators, handlers }) => {
   const AllocationHandler = handlers.allocation;
-  const router = express.Router();
+  const router = Express.Router();
 
   router.route('/')
-    .post(AllocationHandler.createAllocations);
+    .post(ValidationMiddleware(validators.allocation_request), AllocationHandler.createAllocations);
 
   router.route('/:workout_id')
     .get(AllocationHandler.getWorkoutAllocations);
