@@ -1,4 +1,6 @@
 const Consign = require('consign');
+const SocketIO = require('socket.io');
+const Http = require('http');
 
 const Config = require('./config/config');
 const ExpressConfig = require('./config/express');
@@ -14,23 +16,34 @@ module.exports = class Server {
   constructor() {
     this.config = new Config();
 
+    this.app = new ExpressConfig(this).app;
+    this.server = Http.Server(this.app);
+    this.io = new SocketIO(this.server);
+
     Consign({ cwd: 'server', verbose: false })
       .include('models')
       .then('handlers')
       .then('routes')
       .into(this);
 
-    this.app = new ExpressConfig(this).app;
-
     this.routes();
+    this.sockets();
   }
 
-  routes(){
+  routes() {
     this.app.use('/api/allocations', this.routes.allocations);
   }
 
+  sockets() {
+    this.io.on('connection', (socket) => {
+      Logger.info('User connected');
+      
+      socket.on('sensor failure', this.handlers.allocation.onFailure(socket));
+    });
+  }
+
   start(){
-    return this.app.listen(this.config.port, () => {
+    return this.server.listen(this.config.port, () => {
 
       Logger.info(`Workouts server running at: localhost:${this.config.port}`);
     });

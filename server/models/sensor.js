@@ -9,7 +9,12 @@ const findByParticipants = participants =>
     )(SensorsMock)
   );
 
-const findAvailable = (count) =>
+const findAvailable = () =>
+  Promise.resolve(
+    _.find({ usable: true, owner: null }, SensorsMock)
+  );
+
+const findAvailableForParticipants = (count) =>
   Promise.resolve(
     _.pipe(
       _.filter(sensor => sensor.usable && !sensor.owner),
@@ -20,7 +25,7 @@ const findAvailable = (count) =>
 const findSensorForParticipants = participants =>
   findByParticipants(participants)
     .then((ownerSensors) => 
-      findAvailable(participants.length - ownerSensors.length)
+    findAvailableForParticipants(participants.length - ownerSensors.length)
         .then((freeSensors) => [
           ...ownerSensors,
           ...freeSensors
@@ -29,6 +34,7 @@ const findSensorForParticipants = participants =>
 module.exports = {
   findByParticipants,
   findAvailable,
+  findAvailableForParticipants,
   findSensorForParticipants,
 };
 
