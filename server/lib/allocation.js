@@ -3,7 +3,7 @@ const _ = require('lodash/fp');
 const match = (participants, [...sensors]) => 
   _.map(
     (participant) => {
-      const sensor = _.find({ owner: participant.id }, sensors)
+      const sensor = _.find({ owner: participant }, sensors)
                   || _.find({ owner: null }, sensors);
 
       if (sensor) {
@@ -11,9 +11,9 @@ const match = (participants, [...sensors]) =>
       }
 
       return {
-        user_id: participant.id,
+        user_id: participant,
         sensor_id: sensor ? sensor.id : null,
-        sensor_is_user_property: sensor ? sensor.owner === participant.id : false,
+        sensor_is_user_property: sensor ? sensor.owner === participant : false,
       }
     }
   )(participants);

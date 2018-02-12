@@ -1,3 +1,5 @@
+const _ = require('lodash/fp');
+
 const ErrorHandler = require('../lib/error');
 const AllocationLib = require('../lib/allocation');
 
@@ -26,10 +28,8 @@ module.exports = ({ models }) => {
   const getWorkoutAllocations = (req, res) => {
     const { workout_id } = req.params;
 
-    return Workout.getAllocations(workout_id)
-      .then((allocations) => res.send({
-        allocations
-      }))
+    return Workout.getAllocations(Number(workout_id))
+      .then((workout) => res.send(workout))
       .catch(ErrorHandler.onError(res));
   };
 

@@ -26,7 +26,7 @@ module.exports = class Server {
   }
 
   routes(){
-
+    this.app.use('/api/allocations', this.routes.allocations);
   }
 
   start(){

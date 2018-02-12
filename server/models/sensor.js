@@ -5,7 +5,7 @@ const SensorsMock = require('../mocks/sensors');
 const findByParticipants = participants =>
   Promise.resolve(
     _.filter(
-      sensor => sensor.usable && _.some(sensor.owner, participants)
+      sensor => sensor.usable && _.includes(sensor.owner, participants)
     )(SensorsMock)
   );
 
@@ -18,10 +18,10 @@ const findAvailable = (count) =>
   );
 
 const findSensorForParticipants = participants =>
-  Sensor.findByParticipants(participants)
+  findByParticipants(participants)
     .then((ownerSensors) => 
-      Sensor.findAvailable(participants.length - ownerSensors.length)
-        .then((freeSensores) => [
+      findAvailable(participants.length - ownerSensors.length)
+        .then((freeSensors) => [
           ...ownerSensors,
           ...freeSensors
         ]));
@@ -29,6 +29,7 @@ const findSensorForParticipants = participants =>
 module.exports = {
   findByParticipants,
   findAvailable,
+  findSensorForParticipants,
 };
 
 
