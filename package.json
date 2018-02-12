@@ -1,0 +1,19 @@
+{
+  "name": "workouts",
+  "version": "1.0.0",
+  "description": "Workout API",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha ./test/specs/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardofreitass/workouts.git"
+  },
+  "author": "Leonardo Freitas dos Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leonardofreitass/workouts/issues"
+  },
+  "homepage": "https://github.com/leonardofreitass/workouts#readme"
+}
