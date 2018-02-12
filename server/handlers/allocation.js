@@ -23,7 +23,18 @@ module.exports = ({ models }) => {
       .catch(ErrorHandler.onError(res));
   };
 
+  const getWorkoutAllocations = (req, res) => {
+    const { workout_id } = req.params;
+
+    return Workout.getAllocations(workout_id)
+      .then((allocations) => res.send({
+        allocations
+      }))
+      .catch(ErrorHandler.onError(res));
+  };
+
   return {
-    createAllocations
+    createAllocations,
+    getWorkoutAllocations,
   };
 }

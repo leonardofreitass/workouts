@@ -7,5 +7,8 @@ module.exports = ({ handlers }) => {
   router.route('/')
     .post(AllocationHandler.createAllocations);
 
+  router.route('/:workout_id')
+    .get(AllocationHandler.getWorkoutAllocations);
+
   return router;
 }
