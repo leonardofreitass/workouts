@@ -12,9 +12,13 @@ module.exports = ({ models }) => {
     return Sensor.findSensorForParticipants(participants)
       .then((sensors) => {
         const allocations = AllocationLib.match(participants, sensors);
+        const participants_without_allocation = AllocationLib.missingAllocations(allocations);
 
         return Workout.createAllocations(allocations)
-          .then(() => res.send({ allocations }));
+          .then(() => res.send({ 
+            allocations,
+            participants_without_allocation,
+          }));
       })
       .catch(ErrorHandler.onError(res));
   };
