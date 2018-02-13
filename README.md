@@ -53,7 +53,7 @@ Expected response:
 
 ### `GET /allocations/{workout_id}`
 
-Starts the allocation process for a workout
+Fetches the allocations of a workout
 
 Expected response:
 ```json
